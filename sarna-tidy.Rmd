@@ -12,6 +12,7 @@ from a wide dataset into a tall and tidy dataset.
 #library(historydata)
 library(dplyr)
 library(tidyr)
+library(knitr)
 
 sarna <- read.csv("~/Documents/Hist698/week6/historydata/data-raw/sarna.csv", stringsAsFactors = FALSE)
 
@@ -25,7 +26,7 @@ sarna <- sarna %>%
          perc_low = percentage_pop_low,
          perc_high = percentage_pop_high) %>%
   gather(estimate, value, -year) 
-View(sarna)
+kable(sarna)
 
 
 ```
