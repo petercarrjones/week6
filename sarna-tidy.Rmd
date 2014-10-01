@@ -9,20 +9,32 @@ from a wide dataset into a tall and tidy dataset.
 
 ```{r}
 #Load Libraries and data
-library(historydata)
+#library(historydata)
 library(dplyr)
 library(tidyr)
 
-sarna <- read.csv("~/week6/historydata/data-raw/sarna.csv")
+sarna <- read.csv("~/Documents/Hist698/week6/historydata/data-raw/sarna.csv", stringsAsFactors = FALSE)
 
+#Now start to tidy the data
 
+sarna <- sarna %>% 
+  tbl_df() %>%
+  select(year,
+         pop_low = estimate_low,
+         pop_high = estimate_high,
+         perc_low = percentage_pop_low,
+         perc_high = percentage_pop_high) %>%
+  
+  gather(estimate, value, -year) 
+View(sarna)
 
 ```
 
 You can also embed plots, for example:
 
 ```{r, echo=FALSE}
-plot(cars)
+library(ggplot2)
+ggplot(filter(sarna, estimate == "perc_low"), aes(year, value)) + geom_line()
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
