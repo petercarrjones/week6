@@ -32,9 +32,11 @@ View(sarna)
 
 You can also embed plots, for example:
 
-```{r, echo=FALSE}
+```{r}
 library(ggplot2)
-ggplot(filter(sarna, estimate == "perc_low"), aes(year, value)) + geom_line()
+p<-ggplot(sarna, aes(year, value, colour=estimate)) + geom_line() 
+p + facet_wrap(~ estimate, scales = "free_y")
+
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
