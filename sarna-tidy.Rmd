@@ -8,7 +8,25 @@ This is an attempt to turn the Sarna raw dataset (from lmullen's historydata)
 from a wide dataset into a tall and tidy dataset.
 
 ```{r}
-summary(cars)
+#Load Libraries and data
+library(historydata)
+library(dplyr)
+library(tidyr)
+
+sarna <- read.csv("historydata/data-raw/sarna.csv" stringsAsFactors = FALSE)
+
+#Now start to tidy the data
+
+sarna-tidy<-sarna %>% 
+  tbl_df() %>%
+  select(year
+         pop_low = estimate_low,
+         pop_high = estimate_high,
+         perc_low = percentage_pop_low,
+         perc_high = percentage_pop_high) %>%
+  
+  gather(estimate_low)
+
 ```
 
 You can also embed plots, for example:
