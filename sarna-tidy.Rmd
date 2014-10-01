@@ -24,9 +24,9 @@ sarna <- sarna %>%
          pop_high = estimate_high,
          perc_low = percentage_pop_low,
          perc_high = percentage_pop_high) %>%
-  
   gather(estimate, value, -year) 
 View(sarna)
+
 
 ```
 
