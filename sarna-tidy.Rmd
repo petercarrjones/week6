@@ -8,7 +8,15 @@ This is an attempt to turn the Sarna raw dataset (from lmullen's historydata)
 from a wide dataset into a tall and tidy dataset.
 
 ```{r}
-summary(cars)
+#Load Libraries and data
+library(historydata)
+library(dplyr)
+library(tidyr)
+
+sarna <- read.csv("~/week6/historydata/data-raw/sarna.csv")
+
+
+
 ```
 
 You can also embed plots, for example:
