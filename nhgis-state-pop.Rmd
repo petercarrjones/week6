@@ -1,0 +1,32 @@
+---
+title: "NHGIS-State-Pop"
+author: "Pete"
+date: "10/01/2014"
+output: html_document
+---
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(knitr)
+nhgis0011_ts_state <- read.csv("~/Documents/Hist698/week6/historydata/data-raw/nhgis0011_ts_state.csv", header=TRUE, na.strings="NA", stringsAsFactors = FALSE)
+
+statepop<-nhgis0011_ts_state
+statepop<-statepop %>% 
+  tbl_df() %>%
+  select(YEAR,
+         state = STATE,
+         pop = A00AA) %>%
+  group_by(YEAR)%>%
+  summarise(Population=sum(pop, na.rm=TRUE))
+
+kable(statepop)
+
+
+```
+
+
