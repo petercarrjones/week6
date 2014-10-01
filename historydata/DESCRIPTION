@@ -1,0 +1,16 @@
+Package: historydata
+Title: historydata: datasets for historians
+Version: 0.1.9007
+Authors@R: c(person("Lincoln", "Mullen",
+    role = c("aut", "cre"),
+    email = "lincoln@lincolnmullen.com"))
+Description: This package provides sample datasets of interest to historians.
+Depends:
+    R (>= 3.0.2)
+Suggests:
+    ggplot2 (>= 1.0.0)
+License: MIT + file LICENSE
+LazyData: true
+Roxygen: list(wrap = FALSE)
+URL: https://github.com/lmullen/historydata
+BugReports: https://github.com/lmullen/historydata/issues
