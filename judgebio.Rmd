@@ -16,8 +16,19 @@ library(knitr)
 
 jb <- read.csv("~/Documents/Hist698/week6/jb.txt", stringsAsFactors=FALSE)
 
+judgest<-jb 
+judgest<-judgest %>% 
+  tbl_df() %>%
 
-                                        
+  select(year=Birth.year,
+         state = Place.of.Birth..State.,
+         id = Judge.Identification.Number) %>%
+  group_by(state) %>%
+  summarize(count=n())
+kable(judgest)
+  
+##       mutate(Birth.year = as.numeric(judgest$Birth.year))%>%
+##  mutate(Birth.year, year = ntile(Birth.year, 10))%>%              
                                         
 ```
 
